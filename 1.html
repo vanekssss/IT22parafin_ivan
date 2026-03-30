@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Таймер зворотного відліку</title>
 </head>
+
 <body>
+
+    <h1>Таймер</h1>
+
+    <input type="number" id="secondsInput" placeholder="Введіть секунди">
+
+    <h2 id="display">0</h2>
+
+    <button onclick="startTimer()">Старт</button>
+    <button onclick="pauseTimer()">Пауза</button>
+    <button onclick="increaseTime()">+10 сек</button>
+    <button onclick="decreaseTime()">-10 сек</button>
+
+    <p id="message"></p>
+
     <script src="1.js"></script>
 </body>
+
 </html>

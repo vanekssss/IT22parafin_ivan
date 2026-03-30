@@ -1,30 +1,37 @@
-let users = [
-    { name: "Світлана ", age: 16 },
-    { name: "Іван", age: 22 },
-    { name: "Влада", age: 19 },
-    { name: "Богдан", age: 15 },
-    { name: "Анна", age: 25 }
-];
+let input = document.getElementById("inputText");
+let addBtn = document.getElementById("addBtn");
+let sortBtn = document.getElementById("sortBtn");
+let list = document.getElementById("list");
 
-let www = [];
-for (let i = 0; i < users.length; i++) {
-    if (users[i].age > 18) {
-        www.push(users[i]);
-    }
-}
+addBtn.onclick = function () {
+    let value = input.value;
 
-let names = [];
-for (let i = 0; i < users.length; i++) {
-    names.push(users[i].name);
-}
+    if (value === "") return;
 
-let sum = 0;
-for (let i = 0; i < users.length; i++) {
-    sum = sum + users[i].age;
-}
+    let li = document.createElement("li");
+    li.textContent = value;
 
-let average = sum / users.length;
+    li.onclick = function () {
+        this.remove();
+    };
 
-console.log(www);
-console.log(names);
-console.log(average);
+    list.appendChild(li);
+
+    input.value = "";
+};
+
+sortBtn.onclick = function () {
+    let items = list.getElementsByTagName("li");
+
+    let arr = Array.from(items);
+
+    arr.sort(function (a, b) {
+        return a.textContent.localeCompare(b.textContent);
+    });
+
+    list.innerHTML = "";
+
+    arr.forEach(function (li) {
+        list.appendChild(li);
+    });
+};

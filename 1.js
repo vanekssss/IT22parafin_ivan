@@ -1,29 +1,52 @@
-let numbers = [5, 2, 9, 1, 7, 3];
+let timeLeft = 0;
+let timer = null;
+let isRunning = false;
 
-let sum = 0;
-for (let i = 0; i < numbers.length; i++) {
-    sum = sum + numbers[i];
+const display = document.getElementById("display");
+const message = document.getElementById("message");
+
+function updateDisplay() {
+    display.textContent = timeLeft;
 }
 
-let average = sum / numbers.length;
+function startTimer() {
+    if (!isRunning) {
+        if (timeLeft === 0) {
+            const input = document.getElementById("secondsInput").value;
+            timeLeft = parseInt(input) || 0;
+        }
 
-let min = numbers[0];
-let max = numbers[0];
+        if (timeLeft <= 0) return;
 
-for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] < min) {
-        min = numbers[i];
-    }
-    if (numbers[i] > max) {
-        max = numbers[i];
+        isRunning = true;
+        message.textContent = "";
+
+        timer = setInterval(() => {
+            timeLeft--;
+            updateDisplay();
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                isRunning = false;
+                message.textContent = "Час вийшов!";
+            }
+        }, 1000);
     }
 }
 
-numbers.sort(function (a, b) {
-    return a - b;
-});
+function pauseTimer() {
+    clearInterval(timer);
+    isRunning = false;
+}
 
-console.log(numbers);
-console.log(average);
-console.log(min);
-console.log(max);
+function increaseTime() {
+    timeLeft += 10;
+    updateDisplay();
+}
+
+function decreaseTime() {
+    timeLeft = Math.max(0, timeLeft - 10);
+    updateDisplay();
+}
+
+updateDisplay();
