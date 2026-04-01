@@ -1,37 +1,27 @@
-let input = document.getElementById("inputText");
-let addBtn = document.getElementById("addBtn");
-let sortBtn = document.getElementById("sortBtn");
-let list = document.getElementById("list");
+let formEl = document.getElementById("postFormSimple");
+let titleEl = document.getElementById("postTitleSimple");
+let bodyEl = document.getElementById("postBodySimple");
 
-addBtn.onclick = function () {
-    let value = input.value;
+formEl.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    if (value === "") return;
-
-    let li = document.createElement("li");
-    li.textContent = value;
-
-    li.onclick = function () {
-        this.remove();
+    let postData = {
+        title: titleEl.value,
+        body: bodyEl.value
     };
 
-    list.appendChild(li);
-
-    input.value = "";
-};
-
-sortBtn.onclick = function () {
-    let items = list.getElementsByTagName("li");
-
-    let arr = Array.from(items);
-
-    arr.sort(function (a, b) {
-        return a.textContent.localeCompare(b.textContent);
-    });
-
-    list.innerHTML = "";
-
-    arr.forEach(function (li) {
-        list.appendChild(li);
-    });
-};
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            formEl.reset();
+        });
+});

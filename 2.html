@@ -3,20 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Список</title>
+    <title>Пост</title>
 </head>
 
 <body>
 
-    <input type="text" id="inputText" placeholder="Введи текст">
+    <h2>Створити пост</h2>
 
-    <button id="addBtn">Додати</button>
-    <button id="sortBtn">Сортувати</button>
-
-    <ul id="list"></ul>
+    <form id="postFormSimple">
+        <input type="text" id="postTitleSimple" placeholder="Title"><br><br>
+        <textarea id="postBodySimple" placeholder="Body"></textarea><br><br>
+        <button type="submit">Відправити</button>
+    </form>
 
     <script src="2.js"></script>
-
 </body>
 
 </html>
