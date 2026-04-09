@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Налаштування теми</title>
+    <link rel="stylesheet" href="3.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Налаштування теми сайту</h2>
+
+        <div class="buttons">
+            <button onclick="setTheme('light')">Світла</button>
+            <button onclick="setTheme('dark')">Темна</button>
+            <button onclick="setTheme('custom')">Кастомна</button>
+        </div>
+
+        <div class="custom">
+            <label>Фон: <input type="color" id="bgColor"></label>
+            <label>Текст: <input type="color" id="textColor"></label>
+            <label>Акцент: <input type="color" id="accentColor"></label>
+            <div>
+                <button onclick="saveCustomTheme()">Зберегти кольори</button>
+                <button onclick="resetTheme()">Скинути тему</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="3.js"></script>
+</body>
+
+</html>
