@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import ProductCard from './components/ProductCard';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+
+      <ProductCard
+        title="Ноутбук Lenovo"
+        price="25000"
+        category="Техніка"
+      />
+
+      <ProductCard
+        title="Навушники HyperX"
+        price="3200"
+        category="Аксесуари"
+      />
+
+      <ProductCard
+        title="Мишка Logitech"
+        price="1500"
+        category="Периферія"
+      />
+
+      <Footer />
     </div>
   );
 }
