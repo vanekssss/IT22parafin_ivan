@@ -4,14 +4,12 @@ function TaskItem({ task, toggleTask, deleteTask }) {
       <span
         style={{
           textDecoration: task.completed ? "line-through" : "none",
+          cursor: "pointer",
         }}
+        onClick={() => toggleTask(task.id)}
       >
         {task.title}
       </span>
-
-      <button onClick={() => toggleTask(task.id)}>
-        Виконано
-      </button>
 
       <button onClick={() => deleteTask(task.id)}>
         Видалити
